@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Work Order User Manual - Revival Research Institute</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .header img {
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 { font-size: 3em; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header .subtitle { font-size: 1.4em; opacity: 0.95; }
+        
+        .doc-info {
+            background: #f8f9fa;
+            padding: 30px 50px;
+            border-bottom: 4px solid #667eea;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .nav-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 800px;
+        }
+        
+        .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            position: sticky;
+            top: 0;
+            height: fit-content;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar h3 {
+            padding: 0 25px 20px 25px;
+            border-bottom: 2px solid #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .nav-item {
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .nav-item:hover { background: #34495e; }
+        .nav-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-left-color: #ffd700;
+        }
+        
+        .content {
+            padding: 50px;
+            background: white;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2a5298;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+        }
+        
+        h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, #e7f3ff 0%, #f0e7ff 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            margin: 20px 0;
+        }
+        
+        .workflow-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .step-box {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .step-box strong {
+            color: #1e3c72;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .decision-box {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .warning-box strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .highlight-box {
+            background: #e7f3ff;
+            border: 2px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box strong {
+            color: #1976D2;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .role-box {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .role-box strong {
+            color: #155724;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        @media print {
+            .sidebar, .print-button { display: none; }
+            .nav-container { grid-template-columns: 1fr; }
+            .section { display: block !important; page-break-after: always; }
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-container { grid-template-columns: 1fr; }
+            .sidebar { position: relative; max-height: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="data:image/png;base64,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" alt="Revival Research Institute Logo">
+            <h1>Marketing Work Order User Manual</h1>
+            <div class="subtitle">Patient Recruitment Department</div>
+            <div class="subtitle">Revival Research Institute</div>
+        </div>
+        
+        <div class="doc-info">
+            <div class="info-item">
+                <strong>Document Version:</strong> 02
+            </div>
+            <div class="info-item">
+                <strong>Document Type:</strong> User Manual
+            </div>
+            <div class="info-item">
+                <strong>Last Updated:</strong> November 2025
+            </div>
+            <div class="info-item">
+                <strong>Effective Date:</strong> November 2025
+            </div>
+        </div>
+        
+        <div class="nav-container">
+            <div class="sidebar">
+                <h3>📖 Table of Contents</h3>
+                <div class="nav-item active" onclick="showSection('introduction', this)">Introduction</div>
+                <div class="nav-item" onclick="showSection('overview', this)">System Overview</div>
+                <div class="nav-item" onclick="showSection('sop1', this)">SOP-01: New Study Protocol</div>
+                <div class="nav-item" onclick="showSection('sop2', this)">SOP-02: CRC Materials</div>
+                <div class="nav-item" onclick="showSection('sop3', this)">SOP-03: Non-Study Materials</div>
+                <div class="nav-item" onclick="showSection('roles', this)">Role Responsibilities</div>
+                <div class="nav-item" onclick="showSection('definitions', this)">Definitions & Terms</div>
+                <div class="nav-item" onclick="showSection('appendix', this)">Appendix</div>
+            </div>
+            
+            <div class="content">
+                <!-- INTRODUCTION SECTION -->
+                <div id="introduction" class="section active">
+                    <h2>📋 Introduction</h2>
+                    
+                    <div class="intro-box">
+                        <h3>Welcome to the Marketing Work Order System</h3>
+                        <p>This User Manual provides comprehensive guidance on how to request, process, and track marketing materials within Revival Research Institute's Patient Recruitment Department. Our standardized work order system ensures consistent quality, efficient workflows, and proper approvals for all marketing deliverables.</p>
+                    </div>
+                    
+                    <h3>Purpose of This Manual</h3>
+                    <p>This manual serves as the practical guide for all team members who interact with the Marketing Work Order System, including:</p>
+                    <ul>
+                        <li><strong>Regulatory Affairs Teams</strong> - Initiating work orders for new study protocols</li>
+                        <li><strong>Clinical Teams</strong> - Requesting marketing support for studies</li>
+                        <li><strong>Clinical Research Coordinators (CRCs)</strong> - Requesting study-specific materials</li>
+                        <li><strong>Marketing Team</strong> - Creating and managing deliverables</li>
+                        <li><strong>Recruitment Team</strong> - Developing materials and webpages</li>
+                        <li><strong>Corporate Staff</strong> - Requesting organizational materials</li>
+                        <li><strong>Management</strong> - Reviewing and approving materials</li>
+                    </ul>
+                    
+                    <h3>How to Use This Manual</h3>
+                    <div class="workflow-box">
+                        <ol>
+                            <li><strong>Identify Your Need</strong> - Determine which type of marketing material you need</li>
+                            <li><strong>Select the Correct SOP</strong> - Follow the appropriate Standard Operating Procedure (SOP-01, SOP-02, or SOP-03)</li>
+                            <li><strong>Submit Your Request</strong> - Complete the Marketing Work Order Form with all required information</li>
+                            <li><strong>Track Progress</strong> - Use Microsoft Planner to monitor your request in real-time</li>
+                            <li><strong>Provide Feedback</strong> - Review drafts and provide timely feedback when requested</li>
+                        </ol>
+                    </div>
+                    
+                    <h3>Key Principles</h3>
+                    <div class="step-box">
+                        <strong>🎯 Clarity</strong>
+                        <p>Provide complete and clear specifications to ensure accurate deliverables</p>
+                    </div>
+                    <div class="step-box">
+                        <strong>⚡ Efficiency</strong>
+                        <p>Use standardized processes to streamline workflows and reduce turnaround times</p>
+                    </div>
+                    <div class="step-box">
+                        <strong>✅ Quality</strong>
+                        <p>All materials undergo proper review and approval processes</p>
+                    </div>
+                    <div class="step-box">
+                        <strong>📊 Accountability</strong>
+                        <p>Every work order is tracked and documented for complete transparency</p>
+                    </div>
+                </div>
+                <!-- SYSTEM OVERVIEW SECTION -->
+                <div id="overview" class="section">
+                    <h2>🎯 System Overview</h2>
+                    
+                    <h3>Three Types of Work Orders</h3>
+                    <p>The Marketing Work Order System is organized into three distinct Standard Operating Procedures (SOPs), each designed for specific types of requests:</p>
+                    
+                    <div class="step-box">
+                        <strong>SOP-01: New Study Protocol Work Order</strong>
+                        <p><strong>Purpose:</strong> Creating social media lead generation posts for newly initiated clinical trials</p>
+                        <p><strong>Initiated By:</strong> Anyone including Regulatory team, clinical teams, or admin</p>
+                        <p><strong>Deliverable:</strong> Two (2) social media lead generation posts per study</p>
+                        <p><strong>Approvals Required:</strong> Marketing Team Lead → Sponsor → IRB</p>
+                        <p><strong>Timeline:</strong> 7-10 business days (excluding sponsor and IRB approval times)</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>SOP-02: CRC-Specific Work Order</strong>
+                        <p><strong>Purpose:</strong> Creating study-specific marketing materials requested by Clinical Research Coordinators</p>
+                        <p><strong>Initiated By:</strong> CRCs at individual study sites</p>
+                        <p><strong>Deliverables:</strong> Printed brochures and flyers, banners and standees, Pocket Cards and Inclusion & Exclusion Criteria Documents, event-specific promotional materials, digital assets for local promotion</p>
+                        <p><strong>Approvals Required:</strong> Recruitment Team Lead → CRC → US Clinical Teams → Sponsor/IRB (only if study-specific and patient-facing)</p>
+                        <p><strong>Timeline:</strong> 7-11 business days (varies by complexity)</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>SOP-03: Non-Study Specific Work Order</strong>
+                        <p><strong>Purpose:</strong> Creating organizational and corporate marketing materials</p>
+                        <p><strong>Initiated By:</strong> Any corporate staff or team member</p>
+                        <p><strong>Deliverables:</strong> Business cards, corporate brochures, event materials, internal communications, branded materials</p>
+                        <p><strong>Approvals Required:</strong> Recruitment Team Lead → Upper Management (if external-facing)</p>
+                        <p><strong>Timeline:</strong> 5-10 business days (varies by complexity)</p>
+                    </div>
+                    
+                    <h3>Approval Hierarchy</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material Type</th>
+                                <th>Approval Source</th>
+                                <th>Timeline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Social Media Lead Generation Posts</td>
+                                <td>Sponsor → IRB</td>
+                                <td>Varies by organization</td>
+                            </tr>
+                            <tr>
+                                <td>Study-Specific Patient-Facing Materials</td>
+                                <td>US Clinical Teams → Sponsor/IRB</td>
+                                <td>2-5 business days (internal)</td>
+                            </tr>
+                            <tr>
+                                <td>External Corporate Materials</td>
+                                <td>Upper Management</td>
+                                <td>3-5 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Internal Draft Content</td>
+                                <td>Marketing/Recruitment Team Lead</td>
+                                <td>1-2 business days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>The Work Order Process</h3>
+                    <div class="workflow-box">
+                        <h4>Standard Workflow for All Work Orders:</h4>
+                        <ol>
+                            <li><strong>Submission</strong> - Requester completes Marketing Work Order Form</li>
+                            <li><strong>Review</strong> - Team Lead reviews feasibility and assigns resources</li>
+                            <li><strong>Planning</strong> - Task created in Microsoft Planner with requester as member</li>
+                            <li><strong>Development</strong> - Materials created according to specifications</li>
+                            <li><strong>Internal Review</strong> - Quality check by Team Lead</li>
+                            <li><strong>Requester Feedback</strong> - Draft shared for feedback (when applicable)</li>
+                            <li><strong>Approvals</strong> - Required approvals obtained based on material type</li>
+                            <li><strong>Delivery</strong> - Final materials delivered to requester</li>
+                            <li><strong>Closure</strong> - Task marked complete in Planner</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>💡 Key Benefit: Real-Time Tracking</strong>
+                        <p>All work orders are managed through Microsoft Planner, giving requesters and stakeholders full visibility into progress, updates, and timeline. You'll receive an email with your Planner task link upon submission, allowing you to track your request from start to finish.</p>
+                    </div>
+                </div>
+                <!-- SOP-01 SECTION -->
+                <div id="sop1" class="section">
+                    <h2>📱 SOP-01: New Study Protocol Work Order</h2>
+                    
+                    <div class="intro-box">
+                        <h3>Purpose</h3>
+                        <p>SOP-01 defines the standardized process for developing and submitting social media lead generation posts and marketing proposals for new study protocols. This process ensures timely preparation of sponsor-ready marketing materials that support patient recruitment goals.</p>
+                    </div>
+                    
+                    <h3>When to Use SOP-01</h3>
+                    <div class="step-box">
+                        <strong>Use SOP-01 when:</strong>
+                        <ul>
+                            <li>A new study protocol has been received</li>
+                            <li>You need social media lead generation posts for patient recruitment</li>
+                            <li>Materials require sponsor and IRB approval</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <strong>⚠️ Important Note</strong>
+                        <p>SOP-01 focuses EXCLUSIVELY on creating two (2) social media lead generation posts per study. Additional marketing materials (flyers, brochures, pocket cards, etc.) are handled through SOP-02: CRC-Specific Work Orders.</p>
+                    </div>
+                    
+                    <h3>Who Can Initiate This Work Order?</h3>
+                    <p>The marketing work order can be initiated by <strong>anyone</strong> including the Regulatory team, clinical teams, or anyone from admin.</p>
+                    
+                    <h3>Complete Workflow: Step-by-Step</h3>
+                    
+                    <div class="step-box">
+                        <strong>Step 1: Work Order Initiation</strong>
+                        <p><strong>Action:</strong> Initiator (Regulatory, clinical teams, or admin) submits Marketing Work Order Form upon receipt of new protocol</p>
+                        <p><strong>Information Required:</strong></p>
+                        <ul>
+                            <li>Study name and protocol number</li>
+                            <li>Therapeutic area</li>
+                            <li>Target population and eligibility criteria</li>
+                            <li>Timeline and urgency</li>
+                            <li>Any specific messaging requirements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 2: Order Routing</strong>
+                        <p><strong>Action:</strong> Work order automatically routed to Marketing Team</p>
+                        <p><strong>Timeline:</strong> Immediate upon submission</p>
+                    </div>
+                    
+                    <div class="step-box decision-box">
+                        <strong>Step 3: Material Assessment (Decision Point)</strong>
+                        <p><strong>Decision:</strong> Marketing Team checks: Do we have existing posts for this therapeutic area?</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="success-box" style="margin: 10px 0;">
+                                <strong>✅ YES - Existing Posts Available</strong>
+                                <p>Relevant posts are identified from the content library and prepared for submission. Posts may be adapted to align with specific study details.</p>
+                            </div>
+                            
+                            <div class="warning-box" style="margin: 10px 0;">
+                                <strong>🆕 NO - New Posts Required</strong>
+                                <p>Marketing Team creates two (2) new lead generation posts aligned with Revival's branding guidelines and the study's target population.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-box decision-box">
+                        <strong>Step 4: New Therapeutic Area Check (Decision Point)</strong>
+                        <p><strong>Decision:</strong> Is this a new therapeutic area requiring a webpage?</p>
+                        <p><strong>Responsible Team:</strong> This assessment and any resulting webpage creation is handled by the <strong>Recruitment Team</strong></p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="warning-box" style="margin: 10px 0;">
+                                <strong>🆕 YES - New Therapeutic Area</strong>
+                                <p><strong>Parallel Task:</strong> Recruitment Team creates a study webpage with QR code integration. This includes:</p>
+                                <ul>
+                                    <li>Dedicated study webpage design and development</li>
+                                    <li>QR code generation linking to the new webpage</li>
+                                    <li>SEO optimization</li>
+                                    <li>Integration with RealTime-CTMS for lead capture</li>
+                                </ul>
+                                <p><em>Note: This runs in parallel with material development and does not delay the main workflow.</em></p>
+                            </div>
+                            
+                            <div class="success-box" style="margin: 10px 0;">
+                                <strong>✅ NO - Existing Therapeutic Area</strong>
+                                <p>Process proceeds directly to proposal development without additional webpage creation. Existing webpages and QR codes are utilized.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 5: Proposal Development</strong>
+                        <p><strong>Action:</strong> Marketing Team compiles posts into formal proposal document</p>
+                        <p><strong>Proposal Components:</strong></p>
+                        <ul>
+                            <li>Study overview and target population</li>
+                            <li>Two (2) social media lead generation posts (creative + copy)</li>
+                            <li>Proposed targeting strategy (demographics, geography, interests)</li>
+                            <li>Performance metrics and tracking plan</li>
+                            <li>QR codes linking to study webpage</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 6: Sponsor Submission</strong>
+                        <p><strong>Action:</strong> Executive Assistant Team submits proposal to Sponsor for approval</p>
+                        <p><strong>Submitted Package Includes:</strong></p>
+                        <ul>
+                            <li>Formal marketing proposal document</li>
+                            <li>Visual mockups of social media posts</li>
+                            <li>Copy for each post</li>
+                            <li>Targeting strategy</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 7: Sponsor Approval</strong>
+                        <p><strong>Action:</strong> Sponsor reviews and approves marketing materials</p>
+                        <p><strong>Timeline:</strong> Varies by sponsor organization (typically 3-7 business days)</p>
+                        <p><strong>Possible Outcomes:</strong></p>
+                        <ul>
+                            <li>Approved as submitted</li>
+                            <li>Approved with minor modifications</li>
+                            <li>Requires revision and resubmission</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 8: IRB Submission</strong>
+                        <p><strong>Action:</strong> Regulatory Affairs submits approved materials to IRB</p>
+                        <p><strong>Responsible Party:</strong> Regulatory Affairs team</p>
+                        <p><strong>Timeline:</strong> Varies by IRB (typically 5-10 business days)</p>
+                    </div>
+                    
+                    <div class="step-box success-box">
+                        <strong>Step 9: Planner Closure</strong>
+                        <p><strong>Action:</strong> Task marked complete in Microsoft Planner upon IRB approval</p>
+                        <p><strong>Final Steps:</strong></p>
+                        <ul>
+                            <li>All approvals documented and stored on OneDrive</li>
+                            <li>Marketing materials ready for deployment</li>
+                            <li>Stakeholders notified of completion</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Timeline Summary</h3>
+                    <div class="highlight-box">
+                        <strong>⏱️ Standard Turnaround Time: 7-10 Business Days</strong>
+                        <p>From work order submission to sponsor submission (excluding sponsor and IRB approval times, which vary by organization)</p>
+                        <p><strong>Breakdown:</strong></p>
+                        <ul>
+                            <li>Initial review and routing: 1 business day</li>
+                            <li>Content development or selection: 2-4 business days</li>
+                            <li>Internal review and refinement: 1-2 business days</li>
+                            <li>Proposal compilation: 1 business day</li>
+                            <li>Executive Assistant submission: 1-2 business days</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Records & Documentation</h3>
+                    <p>The following records are maintained for each SOP-01 work order:</p>
+                    <ul>
+                        <li>✅ Marketing Work Order Form - Initial request documentation</li>
+                        <li>✅ Study Protocol - Reference document for content development</li>
+                        <li>✅ Social Media Lead Generation Posts - Two finalized posts with creative and copy</li>
+                        <li>✅ Marketing Proposal Document - Comprehensive proposal submitted to sponsor</li>
+                        <li>✅ Sponsor Approval Communication - Email or letter confirming sponsor approval</li>
+                        <li>✅ IRB Approval Documentation - Final authorization for material use</li>
+                        <li>✅ Microsoft Planner Task Log - Complete activity tracking and timeline</li>
+                        <li>✅ OneDrive Storage Link - Central repository for all materials and approvals</li>
+                    </ul>
+                </div>
+                <!-- SOP-02 SECTION -->
+                <div id="sop2" class="section">
+                    <h2>📋 SOP-02: CRC-Specific Work Order</h2>
+                    
+                    <div class="intro-box">
+                        <h3>Purpose</h3>
+                        <p>SOP-02 outlines the standardized process for Clinical Research Coordinators (CRCs) to request study-specific marketing materials or recruitment support. This ensures that materials are created on an as-needed basis based on actual site requirements, preventing waste and maximizing resource efficiency.</p>
+                    </div>
+                    
+                    <h3>When to Use SOP-02</h3>
+                    <div class="step-box">
+                        <strong>Use SOP-02 when:</strong>
+                        <ul>
+                            <li>You are a CRC needing study-specific marketing materials</li>
+                            <li>Your site requires printed materials or promotional items</li>
+                            <li>You need materials for local events or community outreach</li>
+                            <li>Additional marketing support is needed beyond the standard social media posts (created via SOP-01)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>💡 Key Difference from SOP-01</strong>
+                        <p>While SOP-01 focuses on creating social media posts automatically for every new study, SOP-02 creates additional materials only when CRCs specifically request them. This prevents overproduction of materials that may not be utilized.</p>
+                    </div>
+                    
+                    <h3>Available Materials</h3>
+                    <p>CRCs can request the following types of materials through SOP-02:</p>
+                    <ul>
+                        <li>Printed brochures and flyers</li>
+                        <li>Banners and standees</li>
+                        <li>Pocket Cards and Inclusion & Exclusion Criteria Documents</li>
+                        <li>Event-specific promotional materials</li>
+                        <li>Digital assets for local promotion</li>
+                    </ul>
+                    
+                    <h3>Complete Workflow: Step-by-Step</h3>
+                    
+                    <div class="step-box">
+                        <strong>Step 1: CRC Submits Work Order</strong>
+                        <p><strong>Action:</strong> CRC completes Marketing Work Order Form specifying study name, materials needed, and deadline</p>
+                        <p><strong>Information Required:</strong></p>
+                        <ul>
+                            <li>Study name and protocol number</li>
+                            <li>Specific materials needed (type, quantity, size)</li>
+                            <li>Purpose and use case (e.g., community event, physician outreach)</li>
+                            <li>Required deadline</li>
+                            <li>Any special requirements or preferences</li>
+                            <li>Delivery address and contact information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 2: Recruitment Team Review</strong>
+                        <p><strong>Action:</strong> Recruitment Team Lead reviews feasibility and assigns task in Planner</p>
+                        <p><strong>Assessment Criteria:</strong></p>
+                        <ul>
+                            <li>Clarity and completeness of request</li>
+                            <li>Resource requirements and team capacity</li>
+                            <li>Timeline feasibility</li>
+                            <li>Need for additional information or clarification</li>
+                        </ul>
+                        <p>If additional information is needed, Team Lead contacts CRC for clarification before proceeding.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 3: Planner Link Shared</strong>
+                        <p><strong>Action:</strong> CRC receives email with Planner link for transparency and real-time tracking</p>
+                        <p><strong>Benefits of Planner Access:</strong></p>
+                        <ul>
+                            <li>Track progress in real-time</li>
+                            <li>View updates and comments from the team</li>
+                            <li>Communicate directly within the task</li>
+                            <li>Access shared files and drafts</li>
+                            <li>Receive notifications on status changes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box decision-box">
+                        <strong>Step 4: New Therapeutic Area Check (Decision Point)</strong>
+                        <p><strong>Decision:</strong> Is this a new therapeutic area requiring a webpage?</p>
+                        <p><strong>Responsible Team:</strong> Recruitment Team handles this assessment and any webpage creation</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="warning-box" style="margin: 10px 0;">
+                                <strong>🆕 YES - New Therapeutic Area</strong>
+                                <p><strong>Parallel Task:</strong> Recruitment Team creates study webpage with QR code integration</p>
+                                <ul>
+                                    <li>Dedicated webpage designed and developed</li>
+                                    <li>QR codes generated for print materials</li>
+                                    <li>Webpage optimized for SEO and mobile devices</li>
+                                    <li>Integrated with RealTime-CTMS for lead capture</li>
+                                </ul>
+                                <p><em>This runs parallel to material development.</em></p>
+                            </div>
+                            
+                            <div class="success-box" style="margin: 10px 0;">
+                                <strong>✅ NO - Existing Therapeutic Area</strong>
+                                <p>Proceeds directly to material development using existing webpages and QR codes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 5: Material Development</strong>
+                        <p><strong>Action:</strong> Recruitment Team creates requested materials with brand compliance</p>
+                        <p><strong>Development Standards:</strong></p>
+                        <ul>
+                            <li>Design adheres to Revival's branding guidelines</li>
+                            <li>Content is medically accurate and compliant</li>
+                            <li>QR codes integrated linking to study webpage</li>
+                            <li>All materials include necessary legal disclaimers</li>
+                            <li>Contact information and study details accurately represented</li>
+                            <li>Print specifications meet production requirements (resolution, bleed, color mode)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 6: Internal Review</strong>
+                        <p><strong>Action:</strong> Materials reviewed internally by Recruitment Team for quality and compliance</p>
+                        <p><strong>Review Checklist:</strong></p>
+                        <ul>
+                            <li>Language clarity and effectiveness</li>
+                            <li>Brand alignment and visual consistency</li>
+                            <li>Technical accuracy (QR codes, contact info, study details)</li>
+                            <li>Print-readiness or digital optimization</li>
+                            <li>Compliance with advertising standards</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 7: CRC Review & Approval</strong>
+                        <p><strong>Action:</strong> Draft materials shared with requesting CRC for feedback and approval</p>
+                        <p><strong>CRC Evaluates:</strong></p>
+                        <ul>
+                            <li>Relevance to site needs and local context</li>
+                            <li>Accuracy of study information</li>
+                            <li>Suitability for intended use</li>
+                            <li>Any necessary modifications or adjustments</li>
+                        </ul>
+                        <p>Revisions are made based on CRC feedback before proceeding to clinical review.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 8: Clinical Team Review</strong>
+                        <p><strong>Action:</strong> Materials sent to US Clinical Teams for medical accuracy and compliance review</p>
+                        <p><strong>Clinical Team Reviews For:</strong></p>
+                        <ul>
+                            <li>Medical information accuracy</li>
+                            <li>Appropriate disease descriptions</li>
+                            <li>Correct representation of study procedures</li>
+                            <li>Compliance with FDA guidelines for clinical trial advertising</li>
+                            <li>Inclusion of all required disclaimers</li>
+                            <li>No prohibited claims or guarantees</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 9: Sponsor and/or IRB Submission</strong>
+                        <p><strong>Action:</strong> Sponsor and/or IRB submission only if they are study-specific materials that may be patient-facing.</p>
+                        <p><strong>When Required:</strong></p>
+                        <ul>
+                            <li>Materials will be distributed directly to potential participants</li>
+                            <li>Materials contain study-specific recruitment messaging</li>
+                            <li>Materials make claims about the study or condition</li>
+                        </ul>
+                        <p><strong>Not Required For:</strong></p>
+                        <ul>
+                            <li>Internal tools (pocket cards for CRC use only)</li>
+                            <li>Non-patient-facing materials</li>
+                            <li>Generic organizational materials</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 10: Final Delivery</strong>
+                        <p><strong>Action:</strong> Approved materials delivered to CRC for implementation</p>
+                        <p><strong>Delivery Methods:</strong></p>
+                        <ul>
+                            <li>Digital files shared via OneDrive or email</li>
+                            <li>Print materials shipped to site address</li>
+                            <li>Large format items coordinated for pickup or delivery</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box success-box">
+                        <strong>Step 11: Task Closure</strong>
+                        <p><strong>Action:</strong> Task marked complete in Planner after CRC acknowledgment</p>
+                        <p><strong>Final Documentation:</strong></p>
+                        <ul>
+                            <li>All approvals saved on OneDrive</li>
+                            <li>Final materials archived</li>
+                            <li>CRC confirms receipt and satisfaction</li>
+                            <li>Task closed in Microsoft Planner</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Timeline Summary</h3>
+                    <div class="highlight-box">
+                        <strong>⏱️ Standard Turnaround Time: 7-11 Business Days</strong>
+                        <p>Timeline varies based on:</p>
+                        <ul>
+                            <li>Complexity of materials requested</li>
+                            <li>Number of revisions required</li>
+                            <li>Whether a new webpage is needed</li>
+                            <li>Approval turnaround times from CRC and clinical teams</li>
+                            <li>Sponsor/IRB requirements (if applicable)</li>
+                        </ul>
+                        <p><em>Rush requests may be accommodated when feasible with advance notice.</em></p>
+                    </div>
+                    
+                    <h3>Records & Documentation</h3>
+                    <p>The following records are maintained for each SOP-02 work order:</p>
+                    <ul>
+                        <li>✅ Marketing Work Order Form - Initial CRC request</li>
+                        <li>✅ Draft Materials - All versions with revision history</li>
+                        <li>✅ CRC Approval Communication - Feedback and sign-off from requesting CRC</li>
+                        <li>✅ Clinical Team Review Notes - Medical accuracy and compliance approval</li>
+                        <li>✅ Sponsor/IRB Approval (if applicable) - External approval documentation</li>
+                        <li>✅ Final Materials - Approved versions ready for use</li>
+                        <li>✅ Delivery Confirmation - CRC acknowledgment of receipt</li>
+                        <li>✅ Microsoft Planner Task Log - Complete activity and communication history</li>
+                        <li>✅ OneDrive Storage - Centralized repository for all files</li>
+                    </ul>
+                </div>
+                <!-- SOP-03 SECTION -->
+                <div id="sop3" class="section">
+                    <h2>🏢 SOP-03: Non-Study Specific Work Order</h2>
+                    
+                    <div class="intro-box">
+                        <h3>Purpose</h3>
+                        <p>SOP-03 establishes a standardized process for requesting and developing non-study-specific marketing materials required for organizational, corporate, and general operational purposes. These materials support Revival Research Institute's brand presence, employee engagement, community outreach, and corporate communications.</p>
+                    </div>
+                    
+                    <h3>When to Use SOP-03</h3>
+                    <div class="step-box">
+                        <strong>Use SOP-03 when you need:</strong>
+                        <ul>
+                            <li>Corporate identity materials (business cards, letterheads, templates)</li>
+                            <li>Event and community outreach materials (banners, booth displays)</li>
+                            <li>Internal communications (presentations, announcements, training materials)</li>
+                            <li>General organizational materials not tied to specific studies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <strong>⚠️ Key Distinction</strong>
+                        <p>Non-study specific materials do NOT require Sponsor approval or IRB submission. However, materials representing the organization externally must receive Upper Management approval to ensure brand consistency and appropriate messaging.</p>
+                    </div>
+                    
+                    <h3>Available Material Categories</h3>
+                    
+                    <div style="background: white; margin: 15px 0; padding: 20px; border-radius: 10px; border: 2px solid #e9ecef;">
+                        <h4 style="color: #1e3c72;">Corporate Identity Materials</h4>
+                        <ul>
+                            <li>Business cards for staff members</li>
+                            <li>Company brochures and one-pagers</li>
+                            <li>Letterheads and official templates</li>
+                            <li>Email signatures and branded materials</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; margin: 15px 0; padding: 20px; border-radius: 10px; border: 2px solid #e9ecef;">
+                        <h4 style="color: #1e3c72;">Event & Community Outreach</h4>
+                        <ul>
+                            <li>Materials for conferences and trade shows</li>
+                            <li>Community event booths and displays</li>
+                            <li>Banners and standees for events (e.g., Ann Arbor Art Fair)</li>
+                            <li>Promotional giveaways and swag</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; margin: 15px 0; padding: 20px; border-radius: 10px; border: 2px solid #e9ecef;">
+                        <h4 style="color: #1e3c72;">Internal Communications</h4>
+                        <ul>
+                            <li>All Hands meeting materials and presentations</li>
+                            <li>Quarterly employee engagement materials</li>
+                            <li>Internal announcement graphics</li>
+                            <li>Training materials and guides</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; margin: 15px 0; padding: 20px; border-radius: 10px; border: 2px solid #e9ecef;">
+                        <h4 style="color: #1e3c72;">Program & Initiative Materials</h4>
+                        <ul>
+                            <li>Referral program flyers and promotional materials</li>
+                            <li>Partnership and collaboration materials</li>
+                            <li>Recruitment materials for staff hiring</li>
+                            <li>General organizational videos and multimedia</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Complete Workflow: Step-by-Step</h3>
+                    
+                    <div class="step-box">
+                        <strong>Step 1: Staff Member Submits Work Order</strong>
+                        <p><strong>Action:</strong> Corporate staff or team member completes Marketing Work Order Form with material specifications</p>
+                        <p><strong>Information Required:</strong></p>
+                        <ul>
+                            <li>Type of material needed</li>
+                            <li>Purpose and intended use</li>
+                            <li>Specifications (size, quantity, format)</li>
+                            <li>Content requirements or draft copy</li>
+                            <li>Required deadline</li>
+                            <li>Distribution plan (if applicable)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 2: Recruitment Team Review</strong>
+                        <p><strong>Action:</strong> Recruitment Team Lead reviews request and determines resource allocation</p>
+                        <p><strong>Evaluation Criteria:</strong></p>
+                        <ul>
+                            <li>Clarity and completeness of request</li>
+                            <li>Resource requirements and team capacity</li>
+                            <li>Timeline feasibility</li>
+                            <li>Priority relative to other work orders</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 3: Task Assignment in Planner</strong>
+                        <p><strong>Action:</strong> Task created in Planner and assigned to appropriate team members</p>
+                        <p><strong>Task Setup Includes:</strong></p>
+                        <ul>
+                            <li>Clear description and deliverables</li>
+                            <li>Assigned team members with defined roles</li>
+                            <li>Due date and milestones</li>
+                            <li>Requester added as a member for visibility</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 4: Planner Link Shared</strong>
+                        <p><strong>Action:</strong> Requester receives email with Planner link for tracking and collaboration</p>
+                        <p>This enables real-time tracking of progress, access to drafts, and direct communication with the team.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 5: Material Development</strong>
+                        <p><strong>Action:</strong> Recruitment Team develops materials according to specifications</p>
+                        <p><strong>Development Standards:</strong></p>
+                        <ul>
+                            <li>Revival Research Institute branding guidelines</li>
+                            <li>Professional quality and polish</li>
+                            <li>Accurate information and messaging</li>
+                            <li>Appropriate tone for intended audience</li>
+                            <li>Technical specifications (print resolution, digital optimization)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 6: Internal Review</strong>
+                        <p><strong>Action:</strong> Recruitment Team Lead reviews for brand alignment and quality</p>
+                        <p><strong>Quality Checklist:</strong></p>
+                        <ul>
+                            <li>Brand consistency and visual identity</li>
+                            <li>Accuracy of information</li>
+                            <li>Professional appearance and polish</li>
+                            <li>Technical correctness (links, contact info, specifications)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box decision-box">
+                        <strong>Step 7: Material Type Assessment (Decision Point)</strong>
+                        <p><strong>Decision:</strong> Is this material for external organizational representation?</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <div class="warning-box" style="margin: 10px 0;">
+                                <strong>⚠️ YES - External Materials</strong>
+                                <p>Requires Upper Management approval before delivery</p>
+                                <p><strong>Examples:</strong> Corporate brochures, external event materials, partnership documents, public-facing communications</p>
+                            </div>
+                            
+                            <div class="success-box" style="margin: 10px 0;">
+                                <strong>✅ NO - Internal Materials</strong>
+                                <p>Can proceed directly to delivery after internal review</p>
+                                <p><strong>Examples:</strong> Internal presentations, training materials, employee engagement materials, internal announcements</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 8: Requester Review (if needed)</strong>
+                        <p><strong>Action:</strong> Draft materials shared with requester for feedback</p>
+                        <p>For complex materials or when clarification is needed, drafts are shared for requester input before final approval.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Step 9: Final Approval</strong>
+                        <p><strong>Action:</strong> Upper Management approval obtained (if required)</p>
+                        <p><strong>Management Reviews For:</strong></p>
+                        <ul>
+                            <li>Strategic alignment with organizational goals</li>
+                            <li>Appropriate representation of Revival's mission and values</li>
+                            <li>Professional image suitable for external audiences</li>
+                            <li>Consistency with other corporate communications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-box success-box">
+                        <strong>Step 10: Delivery & Task Closure</strong>
+                        <p><strong>Action:</strong> Final materials delivered to requester, task marked complete in Planner</p>
+                        <p><strong>Delivery Methods:</strong></p>
+                        <ul>
+                            <li>Digital files via OneDrive or email</li>
+                            <li>Physical materials shipped or delivered in person</li>
+                            <li>Templates uploaded to shared repositories</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Timeline Summary</h3>
+                    <div class="highlight-box">
+                        <strong>⏱️ Standard Turnaround Time: 5-10 Business Days</strong>
+                        <p>Timeline varies based on:</p>
+                        <ul>
+                            <li>Complexity of materials requested</li>
+                            <li>Whether external approvals are required</li>
+                            <li>Availability of required information and assets</li>
+                            <li>Current workload and team capacity</li>
+                        </ul>
+                        <p><strong>Expedited Requests:</strong> May be accommodated with advance notice and justification</p>
+                    </div>
+                    
+                    <h3>Records & Documentation</h3>
+                    <p>The following records are maintained for each SOP-03 work order:</p>
+                    <ul>
+                        <li>✅ Marketing Work Order Form - Initial request documentation</li>
+                        <li>✅ Draft Materials - All versions with revision notes</li>
+                        <li>✅ Requester Feedback - Input and approval from requesting party</li>
+                        <li>✅ Upper Management Approval (if required) - External review documentation</li>
+                        <li>✅ Final Materials - Approved versions ready for use</li>
+                        <li>✅ Delivery Confirmation - Receipt acknowledgment</li>
+                        <li>✅ Microsoft Planner Task Log - Complete workflow history</li>
+                        <li>✅ OneDrive Storage - Centralized file repository</li>
+                    </ul>
+                </div>
+                <!-- ROLES SECTION -->
+                <div id="roles" class="section">
+                    <h2>👥 Role Responsibilities</h2>
+                    
+                    <p>The Marketing Work Order System involves multiple roles across the organization. Understanding who is responsible for what ensures smooth workflows and clear accountability.</p>
+                    
+                    <h3>Primary Roles</h3>
+                    
+                    <div class="role-box">
+                        <strong>🔄 Work Order Initiators</strong>
+                        <p><strong>Who:</strong> Regulatory Affairs, Clinical Teams, Admin Staff, CRCs, Corporate Staff</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Identify need for marketing materials</li>
+                            <li>Complete Marketing Work Order Form with accurate, complete information</li>
+                            <li>Provide necessary supporting documents (protocols, specifications, brand guidelines)</li>
+                            <li>Respond promptly to requests for clarification</li>
+                            <li>Review drafts and provide timely feedback</li>
+                            <li>Track progress via Microsoft Planner</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>🎨 Marketing Team</strong>
+                        <p><strong>Responsible For:</strong> SOP-01 (New Study Protocol Work Orders)</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Review new study protocols and extract key messaging</li>
+                            <li>Assess existing content library for relevant materials</li>
+                            <li>Create two (2) social media lead generation posts per study</li>
+                            <li>Develop marketing proposals for sponsor submission</li>
+                            <li>Ensure brand alignment and messaging quality</li>
+                            <li>Coordinate with Executive Assistant Team for sponsor submissions</li>
+                            <li>Document all activities in Microsoft Planner</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>📢 Recruitment Team</strong>
+                        <p><strong>Responsible For:</strong> SOP-02 (CRC-Specific) and SOP-03 (Non-Study Materials)</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Review and assess feasibility of material requests</li>
+                            <li>Create Microsoft Planner tasks and assign team members</li>
+                            <li>Develop requested materials according to specifications</li>
+                            <li>Create study webpages for new therapeutic areas (SOP-01 & SOP-02)</li>
+                            <li>Generate and integrate QR codes</li>
+                            <li>Conduct internal quality reviews</li>
+                            <li>Coordinate with requesters for feedback and revisions</li>
+                            <li>Manage material delivery and distribution</li>
+                            <li>Maintain documentation and records</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>✅ Marketing Team Lead</strong>
+                        <p><strong>Role:</strong> Internal Reviewer and Quality Gatekeeper for SOP-01</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Review draft social media posts for brand alignment</li>
+                            <li>Ensure compliance with advertising standards</li>
+                            <li>Verify messaging clarity and effectiveness</li>
+                            <li>Approve materials before sponsor submission</li>
+                            <li>Provide guidance on marketing best practices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>✅ Recruitment Team Lead</strong>
+                        <p><strong>Role:</strong> Internal Reviewer and Project Manager for SOP-02 & SOP-03</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Review work order requests for completeness and feasibility</li>
+                            <li>Assign resources and team members</li>
+                            <li>Review materials for brand compliance and quality</li>
+                            <li>Approve materials before external sharing</li>
+                            <li>Manage team workload and priorities</li>
+                            <li>Ensure timeline adherence</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>🏥 US Clinical Teams</strong>
+                        <p><strong>Role:</strong> Medical Accuracy and Compliance Reviewers (SOP-02 & SOP-04)</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Review materials for medical accuracy</li>
+                            <li>Verify disease descriptions and study information</li>
+                            <li>Ensure compliance with FDA guidelines</li>
+                            <li>Check for required disclaimers and legal language</li>
+                            <li>Verify no prohibited claims or guarantees</li>
+                            <li>Approve materials before external distribution</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>👔 Upper Management</strong>
+                        <p><strong>Role:</strong> Strategic Approvers for External Corporate Materials (SOP-03 & SOP-04)</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Review materials representing organization externally</li>
+                            <li>Ensure strategic alignment with organizational goals</li>
+                            <li>Verify appropriate representation of Revival's mission</li>
+                            <li>Approve professional image and messaging</li>
+                            <li>Ensure consistency with corporate communications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>📧 Executive Assistant Team</strong>
+                        <p><strong>Role:</strong> Sponsor Communication Liaison (SOP-01)</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <ul>
+                            <li>Submit marketing proposals to Sponsors</li>
+                            <li>Manage sponsor communication and follow-up</li>
+                            <li>Track sponsor feedback and approval status</li>
+                            <li>Coordinate revisions if required by sponsor</li>
+                            <li>Document sponsor approval communications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-box">
+                        <strong>📋 Regulatory Affairs</strong>
+                        <p><strong>Role:</strong> IRB Submission Coordinators (SOP-01 & SOP-02)</p>
+                        <p><strong>Responsibilities:</strong></p>
+                        <li>Submit sponsor-approved materials to IRB</li>
+                            <li>Track IRB review and approval status</li>
+                            <li>Communicate IRB feedback or requirements</li>
+                            <li>Maintain IRB approval documentation</li>
+                            <li>Notify stakeholders upon IRB approval</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Collaboration Framework</h3>
+                    <p>Successful execution of the Marketing Work Order System requires seamless collaboration across roles:</p>
+                    
+                    <div class="workflow-box">
+                        <h4>Communication Principles:</h4>
+                        <ul>
+                            <li><strong>Transparency:</strong> All stakeholders have access to Microsoft Planner for real-time visibility</li>
+                            <li><strong>Responsiveness:</strong> Team members respond to requests within 1 business day</li>
+                            <li><strong>Clarity:</strong> Feedback and requirements are communicated clearly and completely</li>
+                            <li><strong>Documentation:</strong> All decisions and approvals are documented in Planner or email</li>
+                            <li><strong>Accountability:</strong> Each role owns specific deliverables and timelines</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- DEFINITIONS SECTION -->
+                <div id="definitions" class="section">
+                    <h2>📚 Definitions & Key Terms</h2>
+                    
+                    <p>This section provides definitions for key terms used throughout the Marketing Work Order System.</p>
+                    
+                    <h3>System & Process Terms</h3>
+                    
+                    <div class="step-box">
+                        <strong>Marketing Work Order</strong>
+                        <p>A formal request submitted through the standardized form for marketing materials or recruitment support. Work orders are categorized into three types (SOP-01, SOP-02, SOP-03) based on the nature of the request.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Microsoft Planner</strong>
+                        <p>The project management and task tracking tool used to manage all marketing work orders. Planner provides real-time visibility, collaboration features, file sharing, and complete audit trails for all activities.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>OneDrive</strong>
+                        <p>The centralized cloud storage repository where all marketing materials, drafts, approvals, and final deliverables are stored. OneDrive ensures version control, accessibility, and secure file management.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>RealTime-CTMS</strong>
+                        <p>Revival's Clinical Trial Management System that captures and manages participant leads. Study webpages integrate with RealTime-CTMS to enable seamless lead capture and tracking.</p>
+                    </div>
+                    
+                    <h3>Material Types</h3>
+                    
+                    <div class="step-box">
+                        <strong>Social Media Lead Generation Posts</strong>
+                        <p>Paid advertisements designed for social media platforms (Facebook, Instagram, etc.) intended to generate interest and capture leads for clinical trial recruitment. These posts include both creative (visual design) and copy (text messaging).</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Marketing Proposal</strong>
+                        <p>A formal document submitted to study Sponsors that includes social media posts, targeting strategy, performance metrics, and campaign overview. Proposals require sponsor approval before implementation.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Pocket Cards</strong>
+                        <p>Small, wallet-sized reference cards that contain study eligibility criteria and contact information. Primarily used by CRCs as quick-reference tools.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Inclusion & Exclusion Criteria Documents</strong>
+                        <p>Detailed documents listing the specific criteria that determine who can (inclusion) and cannot (exclusion) participate in a clinical study. These are essential tools for CRCs and recruitment staff.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Study Webpage</strong>
+                        <p>A dedicated landing page on Revival's website that provides information about a specific study or therapeutic area. Webpages are optimized for search engines (SEO) and integrate with RealTime-CTMS for lead capture. QR codes on printed materials link to these webpages.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>QR Code</strong>
+                        <p>Quick Response code - a scannable barcode that links directly to a study webpage. QR codes are integrated into all printed recruitment materials to provide easy digital access for potential participants.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Patient-Facing Materials</strong>
+                        <p>Marketing materials that will be viewed or received by potential study participants or the general public. These materials require more stringent review and approval processes, including clinical review and often Sponsor/IRB approval.</p>
+                    </div>
+                    
+                    <h3>Approval & Review Terms</h3>
+                    
+                    <div class="step-box">
+                        <strong>Internal Review</strong>
+                        <p>The first-level quality check conducted by the Marketing Team Lead or Recruitment Team Lead to ensure brand alignment, technical accuracy, and professional quality before materials are shared externally.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Clinical Review</strong>
+                        <p>Medical accuracy and compliance review conducted by US Clinical Teams to ensure materials are medically accurate, compliant with FDA guidelines, and include all required disclaimers.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Sponsor Approval</strong>
+                        <p>Formal approval from the pharmaceutical company or organization sponsoring a clinical trial. Sponsors review marketing materials to ensure accuracy, appropriate messaging, and alignment with their brand and regulatory requirements.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>IRB (Institutional Review Board)</strong>
+                        <p>An independent ethics committee that reviews and approves research involving human participants. Marketing materials for clinical trials must receive IRB approval to ensure they meet ethical standards and regulatory requirements.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Upper Management Approval</strong>
+                        <p>Strategic review and approval by Revival's leadership for materials that represent the organization externally. This ensures consistency with corporate strategy, values, and professional standards.</p>
+                    </div>
+                    
+                    <h3>Therapeutic Area & Study Terms</h3>
+                    
+                    <div class="step-box">
+                        <strong>Therapeutic Area</strong>
+                        <p>A medical specialty or category of diseases/conditions (e.g., cardiology, oncology, neurology, dermatology). Studies are organized by therapeutic area, and this categorization determines whether a new webpage is needed.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>New Therapeutic Area</strong>
+                        <p>A therapeutic area that Revival has not previously worked in or does not currently have an active study webpage for. New therapeutic areas trigger the creation of a dedicated webpage and associated QR codes.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Study Protocol</strong>
+                        <p>The comprehensive document provided by the study Sponsor that outlines all details of the clinical trial, including objectives, design, methodology, eligibility criteria, and procedures. The protocol serves as the foundation for all marketing content development.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>CRC (Clinical Research Coordinator)</strong>
+                        <p>Study site staff member responsible for day-to-day management of clinical trials, including participant recruitment, screening, enrollment, and follow-up. CRCs are the primary requesters of site-specific marketing materials.</p>
+                    </div>
+                    
+                    <h3>Branding & Design Terms</h3>
+                    
+                    <div class="step-box">
+                        <strong>Brand Guidelines</strong>
+                        <p>Revival Research Institute's official standards for visual identity, including logo usage, color palette, typography, imagery style, and messaging tone. All marketing materials must adhere to these guidelines.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Print Specifications</strong>
+                        <p>Technical requirements for printed materials, including resolution (300 DPI), color mode (CMYK), bleed area, trim size, and file format. Proper specifications ensure high-quality printed output.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Digital Optimization</strong>
+                        <p>The process of preparing digital materials for optimal performance online, including appropriate file formats, compressed file sizes, web-safe colors, and responsive design for mobile devices.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>SEO (Search Engine Optimization)</strong>
+                        <p>Techniques used to improve a webpage's visibility in search engine results. Study webpages are optimized with relevant keywords, meta descriptions, and structured content to help potential participants find studies through search engines.</p>
+                    </div>
+                </div>
+                <!-- APPENDIX SECTION -->
+                <div id="appendix" class="section">
+                    <h2>📎 Appendix</h2>
+                    
+                    <h3>Quick Reference: Which SOP Should I Use?</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>If You Need...</th>
+                                <th>Use This SOP</th>
+                                <th>Typical Timeline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Social media posts for a new study</td>
+                                <td>SOP-01</td>
+                                <td>7-10 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Study-specific flyers or brochures</td>
+                                <td>SOP-02</td>
+                                <td>7-11 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Pocket cards or I/E criteria documents</td>
+                                <td>SOP-02</td>
+                                <td>7-11 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Event banners or standees</td>
+                                <td>SOP-02 (study-specific) or SOP-03 (general)</td>
+                                <td>7-11 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Business cards</td>
+                                <td>SOP-03</td>
+                                <td>5-10 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Corporate brochures</td>
+                                <td>SOP-03</td>
+                                <td>5-10 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Internal presentation materials</td>
+                                <td>SOP-03</td>
+                                <td>5-10 business days</td>
+                            </tr>
+                            <tr>
+                                <td>Employee engagement materials</td>
+                                <td>SOP-03</td>
+                                <td>5-10 business days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Common Questions & Answers</h3>
+                    
+                    <div class="step-box">
+                        <strong>Q: How do I submit a Marketing Work Order?</strong>
+                        <p>A: Complete the Marketing Work Order Form (available on the shared drive or from your team lead). Include all required information and supporting documents. The form will be automatically routed to the appropriate team.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: Can I request rush or expedited service?</strong>
+                        <p>A: Yes, rush requests may be accommodated when feasible. Indicate "RUSH" in the subject line and provide justification for the urgency. Note that rush requests depend on team capacity and may require approval from the team lead.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: How will I know the status of my work order?</strong>
+                        <p>A: You'll receive an email with a Microsoft Planner link upon submission. You can track real-time progress, view updates, access drafts, and communicate with the team directly through Planner.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: What if I need to make changes after submitting my work order?</strong>
+                        <p>A: Contact the team lead or comment in the Planner task as soon as possible. Changes can usually be accommodated if the work hasn't progressed too far. Significant changes may impact the timeline.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: Do all materials need Sponsor and IRB approval?</strong>
+                        <p>A: No. Only materials created through SOP-01 (social media posts) always require Sponsor and IRB approval. SOP-02 materials require Sponsor/IRB approval only if they are study-specific and patient-facing. SOP-03 materials never require Sponsor/IRB approval but may need Upper Management approval if external-facing.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: How many revisions are included?</strong>
+                        <p>A: Reasonable revisions based on feedback are included in the standard process. However, frequent or extensive revisions may impact timelines. Provide clear, complete feedback to minimize revision cycles.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: Can I request materials for multiple studies at once?</strong>
+                        <p>A: Yes, but submit a separate work order for each study to ensure proper tracking and accountability. This allows each request to be managed independently with its own timeline and approvals.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: What file formats will I receive?</strong>
+                        <p>A: Digital materials are typically delivered as PDFs, PNGs, or JPGs. Print materials include print-ready PDFs with bleed and crop marks. Source files (Adobe InDesign, Photoshop, etc.) can be provided upon request.</p>
+                    </div>
+                    
+                    <div class="step-box">
+                        <strong>Q: Who do I contact if I have questions?</strong>
+                        <p>A: Contact your team lead or comment directly in the Microsoft Planner task associated with your work order. For general system questions, reach out to the Recruitment Department Lead.</p>
+                    </div>
+                    
+                    <h3>Best Practices for Requesters</h3>
+                    
+                    <div class="workflow-box">
+                        <h4>To ensure smooth processing and high-quality deliverables:</h4>
+                        
+                        <div class="step-box">
+                            <strong>✅ Be Comprehensive</strong>
+                            <p>Provide all necessary information upfront. Include study protocols, brand guidelines, preferred imagery, size specifications, quantity requirements, and any special considerations.</p>
+                        </div>
+                        
+                        <div class="step-box">
+                            <strong>✅ Be Clear</strong>
+                            <p>Write clear, specific descriptions of what you need. Vague requests lead to multiple revision cycles. If possible, include examples or reference materials.</p>
+                        </div>
+                        
+                        <div class="step-box">
+                            <strong>✅ Be Realistic</strong>
+                            <p>Allow adequate time for material development and approval processes. Standard timelines exist for a reason - rushing often compromises quality.</p>
+                        </div>
+                        
+                        <div class="step-box">
+                            <strong>✅ Be Responsive</strong>
+                            <p>Respond promptly to requests for feedback or clarification. Delays in your response create delays in delivery. Check Planner regularly for updates.</p>
+                        </div>
+                        
+                        <div class="step-box">
+                            <strong>✅ Be Collaborative</strong>
+                            <p>Trust the expertise of the marketing and recruitment teams. They bring professional knowledge of design, messaging, and compliance. Be open to their suggestions.</p>
+                        </div>
+                        
+                        <div class="step-box">
+                            <strong>✅ Be Organized</strong>
+                            <p>Keep your supporting documents organized and accessible. Use clear file names and provide context for any materials you share.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Contact Information</h3>
+                    
+                    <div class="highlight-box">
+                        <strong>For Questions or Support</strong>
+                        <p><strong>Recruitment Department Lead</strong></p>
+                        <p>For questions about the Marketing Work Order System, process clarifications, or escalations.</p>
+                        <br>
+                        <p><strong>Marketing Team Lead</strong></p>
+                        <p>For questions specific to SOP-01 (New Study Protocol Work Orders) or social media marketing.</p>
+                        <br>
+                        <p><strong>Recruitment Team Lead</strong></p>
+                        <p>For questions specific to SOP-02 (CRC Materials) or SOP-03 (Non-Study Materials).</p>
+                    </div>
+                    
+                    <h3>Document History</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Date</th>
+                                <th>Changes Made</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>October 2025</td>
+                                <td>Initial release of Marketing Work Order User Manual</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>November 2025</td>
+                                <td>Updated to reflect SOP changes: Added Step 4 (New Therapeutic Area Check) to SOP-01 and SOP-02; clarified initiation language; updated SOP-02 materials scope; corrected approval language for Step 9 in SOP-02</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <img src="{data_uri}" alt="Revival Research Institute Logo">
+            <p><strong>Revival Research Institute</strong></p>
+            <p>Patient Recruitment Department - Marketing Work Order User Manual</p>
+            <p>For questions or support, contact the Recruitment Department Lead</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">© 2025 Revival Research Institute. All rights reserved.</p>
+        </div>
+    </div>
+    
+    <button class="print-button" onclick="window.print()">🖨️ Print Manual</button>
+    
+    <script>
+        function showSection(sectionId, element) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all nav items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked nav item
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
